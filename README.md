@@ -1,10 +1,4 @@
 # 0x00. Pascal's Triangle
-This directory contains a Python script implementing Pascal's triangle. This project was created as part of my course requirement at ALX.
+This directory contains scripts on common technical interview questions.
 
-## Concepts
-* Pascal Triangle
-
-## How to run
-The Python script has been marked as an exectuable and can easily be run using the syntax:
-
-`./filename`
+Implementations on common problems might not be specific to any programming language. Directories contain appropriate details on how to run any script located in thsi repo.
