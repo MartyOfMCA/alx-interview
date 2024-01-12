@@ -18,20 +18,36 @@ def canUnlockAll(boxes):
         otherwise False.
     """
     opened_boxes = {0}
-    total_boxes = len(boxes)
 
-    for current_box in range(0, total_boxes):
+    fetch_keys(boxes, boxes[0], opened_boxes)
 
-        keys = boxes[current_box]
+    return (len(opened_boxes) == len(boxes))
 
-        if (not keys and current_box + 1 > max(opened_boxes) and current_box < total_boxes - 1):
-            return (False)
 
-        for key in keys:
-            if (key < total_boxes):
-                opened_boxes.add(key)
+def fetch_keys(boxes, box, opened_boxes):
+    """
+    Fetch the next key from a box.
 
-    if (len(opened_boxes) == total_boxes):
-        return (True)
+    Parameters
+        boxes : list
+        A list of lists containing the supposed
+        keys to boxes.
 
-    return (False)
+        box : list
+        A box from which a key can be retrieved.
+        This will always be the current box.
+
+        opened_boxes : set
+        A set storing the keys found in consecutive
+        boxes.
+    """
+    if (not box):
+        return
+
+    for index in range(0, len(box)):
+        if (box[index] >= len(boxes) or
+                box[index] in opened_boxes):
+            return
+
+        opened_boxes.add(box[index])
+        fetch_keys(boxes, boxes[box[index]], opened_boxes)
