@@ -3,6 +3,7 @@
 Define a function that determines whether
 all boxes provided can be opened.
 """
+import sys
 
 
 def canUnlockAll(boxes):
@@ -17,6 +18,7 @@ def canUnlockAll(boxes):
         True if all boxes can be opend
         otherwise False.
     """
+    sys.setrecursionlimit(1003)
     opened_boxes = {0}
 
     fetch_keys(boxes, boxes[0], opened_boxes)
@@ -47,7 +49,7 @@ def fetch_keys(boxes, box, opened_boxes):
     for index in range(0, len(box)):
         if (box[index] >= len(boxes) or
                 box[index] in opened_boxes):
-            return
+            continue
 
         opened_boxes.add(box[index])
         fetch_keys(boxes, boxes[box[index]], opened_boxes)
