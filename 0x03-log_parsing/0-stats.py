@@ -34,7 +34,7 @@ def process_input():
         if (not check_tokens(tokens)):
             continue
 
-        total_size += int(tokens[8])
+        total_size += int(tokens[-1])
         compute_metric(tokens, methods, metrics)
 
         if (counter % 10 == 0):
@@ -71,11 +71,12 @@ def compute_metric(tokens, methods, metrics):
     """
     method_metric = 0
 
-    method = int(tokens[7])
-    method_metric = metrics.get(method)
-    method_metric = 0 if not method_metric else method_metric
-    methods.add(method)
-    metrics[method] = method_metric + 1
+    if (tokens[-2].isdigit()):
+        method = int(tokens[-2])
+        method_metric = metrics.get(method)
+        method_metric = 0 if not method_metric else method_metric
+        methods.add(method)
+        metrics[method] = method_metric + 1
 
 
 def _tokenize(input):
@@ -111,7 +112,7 @@ def check_tokens(tokens):
         user input matches the required
         format.
     """
-    return (1 if len(tokens) == 9 else 0)
+    return (1 if len(tokens) >= 7 else 0)
 
 
 if (__name__ == "__main__"):
