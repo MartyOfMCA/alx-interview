@@ -40,6 +40,8 @@ def process_input():
         if (counter % 10 == 0):
             print_metrics()
 
+    print_metrics()
+
 
 def print_metrics():
     """
