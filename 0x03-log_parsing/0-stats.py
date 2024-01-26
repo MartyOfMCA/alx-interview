@@ -48,7 +48,7 @@ def print_metrics():
     Print metrics for user input.
     """
     print(f"File size: {total_size}")
-    [print(f"{method}: {metrics[method]}") for method in methods]
+    [print(f"{method}: {metrics[method]}") for method in sorted(methods)]
 
 
 def compute_metric(tokens, methods, metrics):
