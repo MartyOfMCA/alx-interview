@@ -3,7 +3,7 @@
 Define a module for parsing a log.
 """
 from sys import stdin
-from signal import signal, SIGINT, SIG_IGN
+from signal import signal, SIGINT
 
 total_size = 0
 methods = set()
