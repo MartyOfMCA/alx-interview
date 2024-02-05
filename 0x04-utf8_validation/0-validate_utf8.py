@@ -27,7 +27,7 @@ def validUTF8(data):
     for item in data:
         if (chunk == 1):
             # Determine the number of chunks
-            if (item >> 5 == 0b110 or item >> 5 == 0b1110):
+            if (item >> 5 == 0b110):
                 chunk = 2
             elif (item >> 4 == 0b1110):
                 chunk = 3
