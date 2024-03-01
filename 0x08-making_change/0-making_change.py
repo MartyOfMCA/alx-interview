@@ -25,7 +25,10 @@ def makeChange(coins, total):
         The minimum number of coins
         needed to obtain the total.
     """
-    if (total <= 0):
+    if (len(coins) == 0):
+        return (-1)
+
+    if (total < 1):
         return (0)
 
     # Make sure the highest coin is always
